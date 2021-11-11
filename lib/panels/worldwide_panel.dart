@@ -179,7 +179,7 @@ class StatusPanel extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(0.0),
         child: DelayedDisplay(
-          delay: Duration(milliseconds: 1000),
+          delay: Duration(milliseconds: 1200),
           child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,

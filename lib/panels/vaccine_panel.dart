@@ -178,7 +178,7 @@ class _VaccinePanelState extends State<VaccinePanel>
                     // axisAlignment: -1,
                     children: [
                       DelayedDisplay(
-                        delay: Duration(milliseconds: 500),
+                        delay: Duration(milliseconds: 700),
                         child: Padding(
                           padding: const EdgeInsets.only(
                               top: 0, left: 5, bottom: 10),

@@ -43,7 +43,7 @@ class _ChartPanelState extends State<ChartPanel>
       //fit: StackFit.loose,
       children: [
         DelayedDisplay(
-          delay: Duration(milliseconds: 1500),
+          delay: Duration(milliseconds: 1700),
           child: Sparkline(
             data: widget.cases,
             useCubicSmoothing: true,

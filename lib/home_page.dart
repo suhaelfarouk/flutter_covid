@@ -135,7 +135,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Map? vaccineData;
-  List<double> vaccine = [];
+  List<double>? vaccine;
   double? lastVaccine;
   double? todayVaccine;
   // var sumVaccine;
@@ -288,12 +288,12 @@ class _HomePageState extends State<HomePage> {
             : Colors.white,
       ),
       body: SafeArea(
-        child: lastVaccine == null &&
-                vaccine == null &&
-                worldData == null &&
-                todayVaccine == null &&
-                deaths == null &&
-                recovered == null &&
+        child: lastVaccine == null ||
+                vaccine == null ||
+                worldData == null ||
+                todayVaccine == null ||
+                deaths == null ||
+                recovered == null ||
                 cases == null
             ? SizedBox(
                 height: MediaQuery.of(context).size.height / 1.3,
@@ -316,12 +316,17 @@ class _HomePageState extends State<HomePage> {
                     children: [
                       //InfoPanel(),
 
-                      // lastVaccine == null
-                      //     ? Container()
-                      //     :
                       DelayedDisplay(
-                        delay: Duration(milliseconds: 500),
-                        child: VaccinePanel(
+                        delay: Duration(milliseconds: 700),
+                        child:
+                            // lastVaccine == null &&
+                            //         vaccine == null &&
+                            //         todayVaccine == null
+                            //     ? Container(
+                            //         color: Colors.transparent,
+                            //       )
+                            //     :
+                            VaccinePanel(
                           lastVaccine: lastVaccine,
                           vaccine: vaccine,
                           todayVaccine: todayVaccine,
@@ -331,12 +336,16 @@ class _HomePageState extends State<HomePage> {
                       //   delay: Duration(milliseconds: 500),
                       //   child: Divider(),
                       // ),
-                      // worldData == null
-                      //     ? Container()
-                      //     :
+
                       DelayedDisplay(
-                        delay: Duration(milliseconds: 1000),
-                        child: WorldWidePanel(
+                        delay: Duration(milliseconds: 1200),
+                        child:
+                            // worldData == null
+                            //     ? Container(
+                            //         color: Colors.transparent,
+                            //       )
+                            //     :
+                            WorldWidePanel(
                           worldData: worldData,
                         ),
                       ),
@@ -362,11 +371,19 @@ class _HomePageState extends State<HomePage> {
                             borderRadius: BorderRadius.all(Radius.circular(0)),
                           ),
                           child: DelayedDisplay(
-                            delay: Duration(milliseconds: 1500),
-                            child: ChartPanel(
-                                recovered: recovered,
-                                cases: cases,
-                                deaths: deaths),
+                            delay: Duration(milliseconds: 1700),
+                            child:
+                                //  recovered == null &&
+                                //         cases == null &&
+                                //         deaths == null
+                                //     ? Container(
+                                //         color: Colors.transparent,
+                                //       )
+                                //     :
+                                ChartPanel(
+                                    recovered: recovered,
+                                    cases: cases,
+                                    deaths: deaths),
                           )
                           // Stack(
                           //   //clipBehavior: Clip.hardEdge,
