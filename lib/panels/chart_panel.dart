@@ -18,28 +18,12 @@ class ChartPanel extends StatefulWidget {
   State<ChartPanel> createState() => _ChartPanelState();
 }
 
-class _ChartPanelState extends State<ChartPanel>
-//with TickerProviderStateMixin
-{
-  // late final AnimationController _controller = AnimationController(
-  //   duration: const Duration(seconds: 2),
-  //   vsync: this,
-  // )..forward();
-  // late final Animation<Offset> _offsetAnimation =
-  //     Tween<Offset>(begin: const Offset(0.0, 1.0), end: Offset.zero)
-  //         .animate(CurvedAnimation(
-  //             parent: _controller,
-  //             curve: Interval(
-  //               1.8,
-  //               2.0,
-  //               curve: Curves.easeOutBack,
-  //             )));
-
+class _ChartPanelState extends State<ChartPanel> {
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 10),
-      padding: EdgeInsets.only(bottom: 0, left: 5, right: 5),
+      padding: EdgeInsets.only(bottom: 0, left: 20, right: 20),
       height: 154,
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
@@ -48,9 +32,7 @@ class _ChartPanelState extends State<ChartPanel>
         borderRadius: BorderRadius.all(Radius.circular(0)),
       ),
       child: Stack(
-        //clipBehavior: Clip.hardEdge,
         alignment: Alignment.center,
-        //fit: StackFit.loose,
         children: [
           DelayedDisplay(
             delay: Duration(milliseconds: 1700),
@@ -73,18 +55,8 @@ class _ChartPanelState extends State<ChartPanel>
                 ],
               ),
               fillMode: FillMode.below,
-
-              // fillColor: Colors.red,
-              // enableThreshold: true,
-              // thresholdSize: 0.5,
-              //kLine: ['last'],
-              //enableGridLines: true,
-              // gridLineLabelColor: primaryBlack,
-              // gridLineAmount: 2,
-              // gridLineColor: primaryBlack,
               max: 900000.0,
               min: 1.0,
-              // pointsMode: PointsMode.last,
             ),
           ),
           DelayedDisplay(
@@ -108,22 +80,10 @@ class _ChartPanelState extends State<ChartPanel>
                       : Colors.white,
                 ],
               ),
-
-              // fillColor: Colors.black,
-              // enableThreshold: true,
-              // thresholdSize: 0.5,
-              // kLine: ['last'],
-              // enableGridLines: true,
-              // gridLineLabelColor: primaryBlack,
-              // gridLineAmount: 2,
-              // gridLineColor: primaryBlack,
               max: 900000,
-              //600000.0,
-              //600000.0,
               min: 1.0,
             ),
           ),
-
           DelayedDisplay(
             delay: Duration(milliseconds: 1700),
             child: Sparkline(
@@ -134,31 +94,10 @@ class _ChartPanelState extends State<ChartPanel>
               lineColor: Theme.of(context).brightness == Brightness.dark
                   ? Colors.grey[400]!
                   : Colors.grey[900]!,
-              //fillMode: FillMode.below,
-              // fillGradient: LinearGradient(
-              //   begin: Alignment.topCenter,
-              //   end: Alignment.bottomCenter,
-              //   colors: [Colors.grey[900]!, Colors.white],
-              // ),
-              // enableThreshold: true,
-              // thresholdSize: 0.5,
-              // kLine: ['last'],
-              // enableGridLines: true,
-              // gridLineLabelColor: primaryBlack,
-              // gridLineAmount: 2,
-              // gridLineColor: primaryBlack,
               max: 200000.0,
               min: 1.0,
             ),
           ),
-
-          // Container(
-          //   height: 170,
-          //   decoration: BoxDecoration(
-          //     color: Colors.orange[100],
-          //     borderRadius: BorderRadius.all(Radius.circular(8)),
-          //   ),
-          // ),
           DelayedDisplay(
             delay: Duration(milliseconds: 1700),
             child: Padding(

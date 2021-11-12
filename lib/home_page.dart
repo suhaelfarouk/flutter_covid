@@ -67,7 +67,6 @@ class _HomePageState extends State<HomePage> {
     for (var i = 0; i < (cas.length - 1); i++) {
       secondCase.add((map[i + 1] - map[i]));
     }
-    //print(secondCase);
     cases = secondCase;
   }
 
@@ -202,9 +201,11 @@ class _HomePageState extends State<HomePage> {
                 EasyDynamicTheme.of(context).themeMode == ThemeMode.light
                     ? EasyDynamicTheme.of(context).changeTheme(dark: true)
                     : EasyDynamicTheme.of(context).changeTheme(dark: false),
-            icon: Icon(Theme.of(context).brightness == Brightness.light
-                ? Icons.lightbulb_outline
-                : Icons.highlight),
+            icon: Icon(
+              Theme.of(context).brightness == Brightness.light
+                  ? Icons.lightbulb_outline
+                  : Icons.highlight,
+            ),
           )
         ],
         centerTitle: false,
@@ -262,7 +263,10 @@ class _HomePageState extends State<HomePage> {
                       DelayedDisplay(
                         delay: Duration(milliseconds: 1500),
                         child: ChartPanel(
-                            recovered: recovered, cases: cases, deaths: deaths),
+                          recovered: recovered,
+                          cases: cases,
+                          deaths: deaths,
+                        ),
                       ),
                     ],
                   ),
