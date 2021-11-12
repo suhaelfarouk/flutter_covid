@@ -37,133 +37,140 @@ class _ChartPanelState extends State<ChartPanel>
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      //clipBehavior: Clip.hardEdge,
-      alignment: Alignment.center,
-      //fit: StackFit.loose,
-      children: [
-        DelayedDisplay(
-          delay: Duration(milliseconds: 1700),
-          child: Sparkline(
-            data: widget.cases,
-            useCubicSmoothing: true,
-            cubicSmoothingFactor: 0.1,
-            lineWidth: 3,
-            lineColor: Colors.blue,
-            fillGradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Theme.of(context).brightness == Brightness.dark
-                    ? Colors.blue[900]!
-                    : Colors.blue[300]!,
-                Theme.of(context).brightness == Brightness.dark
-                    ? Colors.black
-                    : Colors.white,
-              ],
-            ),
-            fillMode: FillMode.below,
-
-            // fillColor: Colors.red,
-            // enableThreshold: true,
-            // thresholdSize: 0.5,
-            //kLine: ['last'],
-            //enableGridLines: true,
-            // gridLineLabelColor: primaryBlack,
-            // gridLineAmount: 2,
-            // gridLineColor: primaryBlack,
-            max: 900000.0,
-            min: 1.0,
-            // pointsMode: PointsMode.last,
-          ),
-        ),
-        widget.recovered == null
-            ? Container()
-            : DelayedDisplay(
-                delay: Duration(milliseconds: 1500),
-                child: Sparkline(
-                  data: widget.recovered,
-                  useCubicSmoothing: true,
-                  cubicSmoothingFactor: 0.1,
-                  lineWidth: 3,
-                  lineColor: Colors.green,
-                  fillMode: FillMode.below,
-                  fillGradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Theme.of(context).brightness == Brightness.dark
-                          ? Colors.green[900]!
-                          : Colors.green[300]!,
-                      Theme.of(context).brightness == Brightness.dark
-                          ? Colors.black
-                          : Colors.white,
-                    ],
-                  ),
-
-                  // fillColor: Colors.black,
-                  // enableThreshold: true,
-                  // thresholdSize: 0.5,
-                  // kLine: ['last'],
-                  // enableGridLines: true,
-                  // gridLineLabelColor: primaryBlack,
-                  // gridLineAmount: 2,
-                  // gridLineColor: primaryBlack,
-                  max: 900000,
-                  //600000.0,
-                  //600000.0,
-                  min: 1.0,
-                ),
+    return Container(
+      margin: EdgeInsets.only(top: 10),
+      padding: EdgeInsets.only(bottom: 0, left: 5, right: 5),
+      height: 154,
+      decoration: BoxDecoration(
+        color: Theme.of(context).brightness == Brightness.dark
+            ? Colors.black
+            : Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(0)),
+      ),
+      child: Stack(
+        //clipBehavior: Clip.hardEdge,
+        alignment: Alignment.center,
+        //fit: StackFit.loose,
+        children: [
+          DelayedDisplay(
+            delay: Duration(milliseconds: 1700),
+            child: Sparkline(
+              data: widget.cases,
+              useCubicSmoothing: true,
+              cubicSmoothingFactor: 0.1,
+              lineWidth: 3,
+              lineColor: Colors.blue,
+              fillGradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Theme.of(context).brightness == Brightness.dark
+                      ? Colors.blue[900]!
+                      : Colors.blue[300]!,
+                  Theme.of(context).brightness == Brightness.dark
+                      ? Colors.black
+                      : Colors.white,
+                ],
               ),
+              fillMode: FillMode.below,
 
-        widget.deaths == null
-            ? Container()
-            : DelayedDisplay(
-                delay: Duration(milliseconds: 1500),
-                child: Sparkline(
-                  data: widget.deaths,
-                  useCubicSmoothing: true,
-                  cubicSmoothingFactor: 0.1,
-                  lineWidth: 3,
-                  lineColor: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.grey[400]!
-                      : Colors.grey[900]!,
-                  //fillMode: FillMode.below,
-                  // fillGradient: LinearGradient(
-                  //   begin: Alignment.topCenter,
-                  //   end: Alignment.bottomCenter,
-                  //   colors: [Colors.grey[900]!, Colors.white],
-                  // ),
-                  // enableThreshold: true,
-                  // thresholdSize: 0.5,
-                  // kLine: ['last'],
-                  // enableGridLines: true,
-                  // gridLineLabelColor: primaryBlack,
-                  // gridLineAmount: 2,
-                  // gridLineColor: primaryBlack,
-                  max: 200000.0,
-                  min: 1.0,
-                ),
-              ),
-
-        // Container(
-        //   height: 170,
-        //   decoration: BoxDecoration(
-        //     color: Colors.orange[100],
-        //     borderRadius: BorderRadius.all(Radius.circular(8)),
-        //   ),
-        // ),
-        DelayedDisplay(
-          delay: Duration(milliseconds: 1500),
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 100.0),
-            child: Text(
-              'the charts present the data of last 30 days.',
-              style: TextStyle(fontSize: 10),
+              // fillColor: Colors.red,
+              // enableThreshold: true,
+              // thresholdSize: 0.5,
+              //kLine: ['last'],
+              //enableGridLines: true,
+              // gridLineLabelColor: primaryBlack,
+              // gridLineAmount: 2,
+              // gridLineColor: primaryBlack,
+              max: 900000.0,
+              min: 1.0,
+              // pointsMode: PointsMode.last,
             ),
           ),
-        ),
-      ],
+          DelayedDisplay(
+            delay: Duration(milliseconds: 1700),
+            child: Sparkline(
+              data: widget.recovered,
+              useCubicSmoothing: true,
+              cubicSmoothingFactor: 0.1,
+              lineWidth: 3,
+              lineColor: Colors.green,
+              fillMode: FillMode.below,
+              fillGradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Theme.of(context).brightness == Brightness.dark
+                      ? Colors.green[900]!
+                      : Colors.green[300]!,
+                  Theme.of(context).brightness == Brightness.dark
+                      ? Colors.black
+                      : Colors.white,
+                ],
+              ),
+
+              // fillColor: Colors.black,
+              // enableThreshold: true,
+              // thresholdSize: 0.5,
+              // kLine: ['last'],
+              // enableGridLines: true,
+              // gridLineLabelColor: primaryBlack,
+              // gridLineAmount: 2,
+              // gridLineColor: primaryBlack,
+              max: 900000,
+              //600000.0,
+              //600000.0,
+              min: 1.0,
+            ),
+          ),
+
+          DelayedDisplay(
+            delay: Duration(milliseconds: 1700),
+            child: Sparkline(
+              data: widget.deaths,
+              useCubicSmoothing: true,
+              cubicSmoothingFactor: 0.1,
+              lineWidth: 3,
+              lineColor: Theme.of(context).brightness == Brightness.dark
+                  ? Colors.grey[400]!
+                  : Colors.grey[900]!,
+              //fillMode: FillMode.below,
+              // fillGradient: LinearGradient(
+              //   begin: Alignment.topCenter,
+              //   end: Alignment.bottomCenter,
+              //   colors: [Colors.grey[900]!, Colors.white],
+              // ),
+              // enableThreshold: true,
+              // thresholdSize: 0.5,
+              // kLine: ['last'],
+              // enableGridLines: true,
+              // gridLineLabelColor: primaryBlack,
+              // gridLineAmount: 2,
+              // gridLineColor: primaryBlack,
+              max: 200000.0,
+              min: 1.0,
+            ),
+          ),
+
+          // Container(
+          //   height: 170,
+          //   decoration: BoxDecoration(
+          //     color: Colors.orange[100],
+          //     borderRadius: BorderRadius.all(Radius.circular(8)),
+          //   ),
+          // ),
+          DelayedDisplay(
+            delay: Duration(milliseconds: 1700),
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 100.0),
+              child: Text(
+                'the charts present the data of last 30 days.',
+                style: TextStyle(fontSize: 10),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

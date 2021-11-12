@@ -173,7 +173,6 @@ class _HomePageState extends State<HomePage> {
   Future fetchData() async {
     fetchWorldWideData();
     fetchAffectedCountryData();
-
     fetchCasesData();
     fetchDeathsData();
     fetchRecoveredData();
@@ -260,25 +259,11 @@ class _HomePageState extends State<HomePage> {
                           worldData: worldData,
                         ),
                       ),
-                      Container(
-                          margin: EdgeInsets.only(top: 10),
-                          padding:
-                              EdgeInsets.only(bottom: 0, left: 20, right: 20),
-                          height: 154,
-                          decoration: BoxDecoration(
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                    ? Colors.black
-                                    : Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(0)),
-                          ),
-                          child: DelayedDisplay(
-                            delay: Duration(milliseconds: 1700),
-                            child: ChartPanel(
-                                recovered: recovered,
-                                cases: cases,
-                                deaths: deaths),
-                          )),
+                      DelayedDisplay(
+                        delay: Duration(milliseconds: 1500),
+                        child: ChartPanel(
+                            recovered: recovered, cases: cases, deaths: deaths),
+                      ),
                     ],
                   ),
                 ),
