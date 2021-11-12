@@ -1,22 +1,18 @@
 import 'dart:convert';
-import 'package:chart_sparkline/chart_sparkline.dart';
+
 import 'package:delayed_display/delayed_display.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_covid/datasource.dart';
-import 'package:flutter_covid/models/chart_api.dart';
-import 'package:flutter_covid/pages/vaccine_page.dart';
+
 import 'package:flutter_covid/panels/chart_panel.dart';
-import 'package:flutter_covid/panels/info_panel.dart';
-import 'package:flutter_covid/panels/mostaffected_panel.dart';
+
 import 'package:flutter_covid/panels/navbar_panel.dart';
 import 'package:flutter_covid/panels/vaccine_panel.dart';
 import 'package:flutter_covid/panels/worldwide_panel.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
-
-import 'models/chart_model.dart';
 
 class HomePage extends StatefulWidget {
   final quote = DataSource.quote;

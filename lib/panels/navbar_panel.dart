@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_covid/home_page.dart';
-import 'package:flutter_covid/models/vaccountry_model.dart';
-import 'package:flutter_covid/pages/cnews_page.dart';
-import 'package:flutter_covid/pages/country_page.dart';
 
-import 'package:flutter_covid/pages/location_page.dart';
-import 'package:flutter_covid/pages/news_page.dart';
-import 'package:flutter_covid/pages/states_page.dart';
 import 'package:flutter_covid/pages/vaccine_page.dart';
-import 'package:flutter_covid/panels/info_panel.dart';
+
 import 'package:flutter_covid/panels/newsbar_panel.dart';
 import 'package:flutter_covid/panels/tabbar_panel.dart';
 import 'package:flutter_covid/panels/vaccbar_panel.dart';
-
-import '../datasource.dart';
-import 'chart_panel.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -27,8 +18,8 @@ class _NavBarState extends State<NavBar> {
     HomePage(),
     TabBarPanel(),
     //StatesPage(),
-    VaccinePage(),
-    //VaccBarPanel(),
+    // VaccinePage(),
+    VaccBarPanel(),
     NewsBarPanel(),
     // ChartPanel(),
     //IndianPage(),

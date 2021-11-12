@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_covid/pages/anews_page.dart';
 import 'package:flutter_covid/pages/bnews_page.dart';
 import 'package:flutter_covid/pages/cnews_page.dart';
-import 'package:flutter_covid/pages/country_page.dart';
-import 'package:flutter_covid/pages/states_page.dart';
 
 import '../datasource.dart';
 

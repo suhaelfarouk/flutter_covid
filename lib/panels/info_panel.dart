@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_covid/pages/faqs_page.dart';
-import 'package:flutter_covid/pages/news_page.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
 class InfoPanel extends StatelessWidget {
@@ -123,8 +123,8 @@ class InfoPanel extends StatelessWidget {
                   color: Colors.grey[400]),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => NewsPage()));
+                  // Navigator.push(context,
+                  //     MaterialPageRoute(builder: (context) => NewsPage()));
                 },
                 child: Container(
                   height: 50,

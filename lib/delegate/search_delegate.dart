@@ -170,7 +170,7 @@ class Search extends SearchDelegate {
               ),
             ));
       },
-      itemCount: suggestionList == null ? 0 : suggestionList.length,
+      itemCount: suggestionList.length,
     );
   }
 }
