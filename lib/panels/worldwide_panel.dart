@@ -116,7 +116,7 @@ class StatusPanel extends StatelessWidget {
                         title,
                         style: TextStyle(
                           fontWeight: FontWeight.w100,
-                          fontSize: 15,
+                          fontSize: 13,
                           color: textColor,
                         ),
                       ),
@@ -139,7 +139,7 @@ class StatusPanel extends StatelessWidget {
                     children: [
                       Icon(
                         Icons.trending_up,
-                        size: 15,
+                        size: 13,
                         color: textColor,
                       ),
                       SizedBox(
@@ -150,7 +150,7 @@ class StatusPanel extends StatelessWidget {
                         ('${(NumberFormat.compact().format(today).toString())}'),
                         style: TextStyle(
                           fontWeight: FontWeight.w100,
-                          fontSize: 15,
+                          fontSize: 13,
                           color: textColor,
                         ),
                       ),

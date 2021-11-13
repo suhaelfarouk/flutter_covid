@@ -206,7 +206,7 @@ class _HomePageState extends State<HomePage> {
         ],
         centerTitle: false,
         title: Text(
-          'Worldwide Coronavirus Statistics',
+          'Worldwide Statistics',
           style: TextStyle(
             fontWeight: FontWeight.w800,
             color: Theme.of(context).brightness == Brightness.dark

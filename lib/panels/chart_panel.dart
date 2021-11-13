@@ -22,14 +22,14 @@ class _ChartPanelState extends State<ChartPanel> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 10),
-      padding: EdgeInsets.only(bottom: 0, left: 20, right: 20),
-      height: 154,
+      margin: EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 10),
+      padding: EdgeInsets.only(bottom: 10, left: 15, right: 15),
+      height: 143,
       decoration: BoxDecoration(
         color: Theme.of(context).brightness == Brightness.dark
             ? Colors.black
             : Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(0)),
+        borderRadius: BorderRadius.all(Radius.circular(8)),
       ),
       child: Stack(
         alignment: Alignment.center,
@@ -101,7 +101,7 @@ class _ChartPanelState extends State<ChartPanel> {
           DelayedDisplay(
             delay: Duration(milliseconds: 1700),
             child: Padding(
-              padding: const EdgeInsets.only(bottom: 100.0),
+              padding: const EdgeInsets.only(bottom: 90.0),
               child: Text(
                 'the charts present the data of last 30 days.',
                 style: TextStyle(fontSize: 10),

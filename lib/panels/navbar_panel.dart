@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_covid/home_page.dart';
-
-import 'package:flutter_covid/pages/vaccine_page.dart';
-
 import 'package:flutter_covid/panels/newsbar_panel.dart';
 import 'package:flutter_covid/panels/tabbar_panel.dart';
 import 'package:flutter_covid/panels/vaccbar_panel.dart';
@@ -17,16 +14,8 @@ class _NavBarState extends State<NavBar> {
   List<Widget> pageList = [
     HomePage(),
     TabBarPanel(),
-    //StatesPage(),
-    // VaccinePage(),
     VaccBarPanel(),
     NewsBarPanel(),
-    // ChartPanel(),
-    //IndianPage(),
-    //CountryPage(),
-    //LocationPage(),
-    //InfoPanel()
-    //VaccinePage(),
   ];
 
   @override

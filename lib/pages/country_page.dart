@@ -30,8 +30,8 @@ class _CountryPageState extends State<CountryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).brightness == Brightness.dark
-          ? Colors.black
-          : Colors.white,
+          ? Colors.black45
+          : Colors.black12,
       // appBar: AppBar(
       //   backgroundColor: Theme.of(context).brightness == Brightness.dark
       //       ? primaryBlack
@@ -63,13 +63,19 @@ class _CountryPageState extends State<CountryPage> {
                   delay: Duration(milliseconds: 500),
                   child: Column(
                     children: [
-                      Container(
-                        margin:
-                            EdgeInsets.symmetric(horizontal: 1, vertical: 1),
-                        height: 56,
-                        width: MediaQuery.of(context).size.width,
-                        child: Padding(
-                          padding: const EdgeInsets.only(top: 1.0),
+                      Padding(
+                        padding: const EdgeInsets.only(
+                            top: 10.0, left: 10.0, right: 10.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.black
+                                    : Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                          ),
+                          height: 65,
+                          width: MediaQuery.of(context).size.width,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             //crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,10 +85,9 @@ class _CountryPageState extends State<CountryPage> {
                                 //crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    width: 120,
+                                    width: 114,
                                     //  height: 100,
-                                    margin: EdgeInsets.symmetric(
-                                        horizontal: 10, vertical: 1),
+
                                     child: Row(
                                       children: [
                                         SizedBox(
@@ -111,11 +116,9 @@ class _CountryPageState extends State<CountryPage> {
                                       ],
                                     ),
                                   ),
-                                  // SizedBox(
-                                  //   width: 10,
-                                  // ),
                                   Expanded(
                                     child: Container(
+                                      padding: EdgeInsets.only(right: 10),
                                       width: MediaQuery.of(context).size.width,
                                       child: Row(
                                         // mainAxisAlignment:
@@ -125,17 +128,26 @@ class _CountryPageState extends State<CountryPage> {
                                         children: [
                                           Container(
                                             width: 54,
-                                            child: Text(
-                                              // 'ACTIVE : ' +
-                                              //  countryData![index]['active'].toString(),
-                                              NumberFormat.compact()
-                                                  .format(countryData![index]
-                                                      ['active'])
-                                                  .toString(),
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.red,
-                                              ),
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.spaceAround,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                Text(
+                                                  // 'ACTIVE : ' +
+                                                  //  countryData![index]['active'].toString(),
+                                                  NumberFormat.compact()
+                                                      .format(
+                                                          countryData![index]
+                                                              ['active'])
+                                                      .toString(),
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.red,
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                           Container(
@@ -144,7 +156,7 @@ class _CountryPageState extends State<CountryPage> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceAround,
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.end,
                                               children: [
                                                 Text(
                                                   // 'CONFIRMED : ' +
@@ -185,7 +197,7 @@ class _CountryPageState extends State<CountryPage> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceAround,
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.end,
                                               children: [
                                                 Text(
                                                   //  'RECOVERED : ' +
@@ -228,7 +240,7 @@ class _CountryPageState extends State<CountryPage> {
                                               mainAxisAlignment:
                                                   MainAxisAlignment.spaceAround,
                                               crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                                  CrossAxisAlignment.end,
                                               children: [
                                                 Text(
                                                   //  'DEATHS : ' +
@@ -283,7 +295,7 @@ class _CountryPageState extends State<CountryPage> {
                           ),
                         ),
                       ),
-                      Divider(),
+                      // Divider(),
                     ],
                   ),
                 );

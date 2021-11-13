@@ -68,11 +68,11 @@ class _VaccinePanelState extends State<VaccinePanel> {
         showBottomSheet(context);
       },
       child: Container(
-        height: 153,
-        padding: EdgeInsets.only(right: 20, left: 20, bottom: 0, top: 5),
-        margin: EdgeInsets.only(bottom: 10),
+        height: 143,
+        padding: EdgeInsets.only(right: 15, left: 15, bottom: 0, top: 10),
+        margin: EdgeInsets.only(bottom: 10, top: 10, right: 10, left: 10),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(0)),
+          borderRadius: BorderRadius.all(Radius.circular(8)),
           color: Theme.of(context).brightness == Brightness.dark
               ? Colors.black
               : Colors.white,
@@ -127,9 +127,9 @@ class _VaccinePanelState extends State<VaccinePanel> {
                   child: Padding(
                     padding: const EdgeInsets.only(
                       top: 0,
-                      left: 10,
-                      right: 10,
-                      bottom: 10,
+                      left: 0,
+                      right: 0,
+                      bottom: 20,
                     ),
                     child: Sparkline(
                       fallbackHeight: 100,
@@ -168,12 +168,12 @@ class _VaccinePanelState extends State<VaccinePanel> {
                     Padding(
                       padding: const EdgeInsets.only(
                         bottom: 1,
-                        top: 80,
+                        top: 90,
                         left: 1,
                         right: 1,
                       ),
                       child: Text(
-                        'yestereday over the world',
+                        'yestereday',
                         style: TextStyle(
                           color: vacColor,
                           fontWeight: FontWeight.normal,
@@ -184,7 +184,7 @@ class _VaccinePanelState extends State<VaccinePanel> {
                     Padding(
                       padding: const EdgeInsets.only(
                         bottom: 2,
-                        top: 80,
+                        top: 90,
                         left: 2,
                         right: 2,
                       ),
@@ -193,19 +193,19 @@ class _VaccinePanelState extends State<VaccinePanel> {
                         style: TextStyle(
                           color: vacColor,
                           fontWeight: FontWeight.bold,
-                          fontSize: 13,
+                          fontSize: 14,
                         ),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(
                         bottom: 1,
-                        top: 80,
+                        top: 90,
                         left: 1,
                         right: 1,
                       ),
                       child: Text(
-                        'people were vaccinated.',
+                        'doses were adminstered.',
                         style: TextStyle(
                           color: vacColor,
                           fontWeight: FontWeight.normal,
