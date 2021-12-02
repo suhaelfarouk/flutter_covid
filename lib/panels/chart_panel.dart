@@ -55,7 +55,7 @@ class _ChartPanelState extends State<ChartPanel> {
                 ],
               ),
               fillMode: FillMode.below,
-              max: 900000.0,
+              max: 1200000.0,
               min: 1.0,
             ),
           ),

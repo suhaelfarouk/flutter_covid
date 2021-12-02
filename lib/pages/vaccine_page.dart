@@ -12,8 +12,8 @@ class VaccinePage extends StatefulWidget {
 //https://cdn-api.co-vin.in/api/v2/appointment/centers/public/findByLatLong?lat=34.0837&long=74.7973
 class _VaccinePageState extends State<VaccinePage> {
   TextEditingController districtCodecontroller = TextEditingController();
-  String dropDownMonthValue = '01';
-  String dropDownDayValue = '01';
+  String? dropDownMonthValue;
+  String? dropDownDayValue;
   List slots = [];
   fetchslots() async {
     await http
@@ -21,9 +21,9 @@ class _VaccinePageState extends State<VaccinePage> {
             'https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/findByPin?pincode=' +
                 districtCodecontroller.text +
                 '&date=' +
-                dropDownDayValue +
+                dropDownDayValue! +
                 '-' +
-                dropDownMonthValue +
+                dropDownMonthValue! +
                 '-2021'))
         .then((value) {
       Map result = jsonDecode(value.body);
@@ -38,7 +38,10 @@ class _VaccinePageState extends State<VaccinePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Vaccination Slots')),
+      backgroundColor: Theme.of(context).brightness == Brightness.dark
+          ? Colors.black45
+          : Colors.black12,
+      //appBar: AppBar(title: Text('Vaccination Slots')),
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(10),
@@ -54,23 +57,43 @@ class _VaccinePageState extends State<VaccinePage> {
               controller: districtCodecontroller,
               keyboardType: TextInputType.number,
               maxLength: 6,
-              decoration: InputDecoration(hintText: 'Enter District Code'),
+              decoration: InputDecoration(
+                hintText: 'Enter District Code',
+                fillColor: Theme.of(context).brightness == Brightness.dark
+                    ? Colors.black
+                    : Colors.white,
+                filled: true,
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10),
+                    borderSide: BorderSide.none),
+              ),
             ),
             Row(
               children: [
                 Expanded(
                   child: Container(
-                    height: 52,
+                    padding: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.black
+                          : Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    height: 55,
                     child: DropdownButton<String>(
+                      focusColor:
+                          Theme.of(context).brightness == Brightness.dark
+                              ? Colors.white
+                              : Colors.black,
+                      hint: Text(
+                        'Select Day',
+                      ),
                       isExpanded: true,
                       value: dropDownDayValue,
-                      hint: Text('Day'),
                       icon: const Icon(Icons.arrow_drop_down),
                       iconSize: 24,
-                      elevation: 16,
                       underline: Container(
-                        color: Colors.grey.shade400,
-                        height: 2,
+                        height: 0,
                       ),
                       onChanged: (String? newValue) {
                         setState(() {
@@ -125,6 +148,7 @@ class _VaccinePageState extends State<VaccinePage> {
                     child: DropdownButton<String>(
                       isExpanded: true,
                       value: dropDownMonthValue,
+                      hint: Text('Month'),
                       icon: const Icon(Icons.arrow_drop_down),
                       iconSize: 24,
                       elevation: 16,
