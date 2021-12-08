@@ -41,17 +41,42 @@ class _VaccinePageState extends State<VaccinePage> {
       backgroundColor: Theme.of(context).brightness == Brightness.dark
           ? Colors.black45
           : Colors.black12,
-      //appBar: AppBar(title: Text('Vaccination Slots')),
       body: Container(
         padding: EdgeInsets.all(20),
-        // height: MediaQuery.of(context).size.height,
-        // width: MediaQuery.of(context).size.width,
         child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-          // Container(
-          //   margin: EdgeInsets.all(20),
-          //   height: 200,
-          //   // child: Image.asset('assets/vaccine.png'),
-          // ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              margin: EdgeInsets.only(top: 20),
+              height: 100,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Find vaccine slots',
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                  ),
+                  Text(
+                    'and centers near you.',
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white
+                          : Colors.black,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
           TextField(
             controller: districtCodecontroller,
             keyboardType: TextInputType.number,

@@ -1,10 +1,12 @@
 import 'dart:convert';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_covid/datasource.dart';
+import 'package:flutter_covid/pages/offline_page.dart';
 
 import 'package:flutter_covid/panels/chart_panel.dart';
 
