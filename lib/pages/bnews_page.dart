@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 
 class BnewsPage extends StatefulWidget {
   @override
@@ -59,74 +60,78 @@ class _BnewsPageState extends State<BnewsPage>
                           right: 10.0,
                           left: 10.0,
                         ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color:
-                                Theme.of(context).brightness == Brightness.dark
-                                    ? Colors.black
-                                    : Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(8)),
-                          ),
-                          height: 120,
-                          width: MediaQuery.of(context).size.width,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 15.0, right: 15, top: 10, bottom: 10),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // ClipRRect(
-                                //   borderRadius: BorderRadius.circular(10),
-                                //   child: Image.network(
-                                //     newsData![index]['media'] == null
-                                //         ? 'https://icon-library.com/images/not-found-icon/not-found-icon-28.jpg'
-                                //         : newsData![index]['media'],
-                                //     width: 80,
-                                //     height: 80,
-                                //     fit: BoxFit.cover,
-                                //   ),
-                                // ),
-                                // SizedBox(
-                                //   width: 15,
-                                // ),
-                                Expanded(
-                                  child: Text(
-                                    newsData![index]['title'],
-                                    overflow: TextOverflow.visible,
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.normal,
+                        child: GestureDetector(
+                          onTap: () => launch(newsData![index]['link']),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).brightness ==
+                                      Brightness.dark
+                                  ? Colors.black
+                                  : Colors.white,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(8)),
+                            ),
+                            height: 120,
+                            width: MediaQuery.of(context).size.width,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 15.0, right: 15, top: 10, bottom: 10),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  // ClipRRect(
+                                  //   borderRadius: BorderRadius.circular(10),
+                                  //   child: Image.network(
+                                  //     newsData![index]['media'] == null
+                                  //         ? 'https://icon-library.com/images/not-found-icon/not-found-icon-28.jpg'
+                                  //         : newsData![index]['media'],
+                                  //     width: 80,
+                                  //     height: 80,
+                                  //     fit: BoxFit.cover,
+                                  //   ),
+                                  // ),
+                                  // SizedBox(
+                                  //   width: 15,
+                                  // ),
+                                  Expanded(
+                                    child: Text(
+                                      newsData![index]['title'],
+                                      overflow: TextOverflow.visible,
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.normal,
+                                      ),
                                     ),
                                   ),
-                                ),
 
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 10.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        newsData![index]['published'],
-                                        overflow: TextOverflow.visible,
-                                        style: TextStyle(
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.bold,
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 10.0),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          newsData![index]['published'],
+                                          overflow: TextOverflow.visible,
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                      ),
-                                      Text(
-                                        newsData![index]['source']['title'],
-                                        overflow: TextOverflow.visible,
-                                        style: TextStyle(
-                                          fontSize: 11,
-                                          fontWeight: FontWeight.bold,
+                                        Text(
+                                          newsData![index]['source']['title'],
+                                          overflow: TextOverflow.visible,
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.bold,
+                                          ),
                                         ),
-                                      ),
-                                    ],
-                                  ),
-                                )
-                              ],
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
                             ),
                           ),
                         ),

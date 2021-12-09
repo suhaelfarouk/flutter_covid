@@ -74,7 +74,7 @@ class _CentersPageState extends State<CentersPage> {
                       'Find vaccine \nslots and centers \nnear you.',
                       style: TextStyle(
                         fontSize: 36,
-                        fontWeight: FontWeight.w100,
+                        fontWeight: FontWeight.normal,
                         color: Theme.of(context).brightness == Brightness.dark
                             ? Colors.white
                             : Colors.black,
