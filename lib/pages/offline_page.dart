@@ -1,6 +1,4 @@
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_covid/panels/navbar_panel.dart';
 
 class OfflinePage extends StatefulWidget {
   @override

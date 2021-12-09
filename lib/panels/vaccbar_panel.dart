@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_covid/pages/centers_page.dart';
 
-import 'package:flutter_covid/pages/location_page.dart';
 import 'package:flutter_covid/pages/vaccine_page.dart';
 
 import '../datasource.dart';

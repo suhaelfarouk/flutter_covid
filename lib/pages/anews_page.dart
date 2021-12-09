@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_covid/pages/webview_page.dart';
+
 import 'package:http/http.dart' as http;
-import 'package:url_launcher/url_launcher.dart';
+
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 class AnewsPage extends StatefulWidget {
@@ -29,7 +29,7 @@ class _AnewsPageState extends State<AnewsPage>
         newsData = jsonDecode(response.body)['entries'];
       });
     }
-    print(newsData);
+    // print(newsData);
   }
 
   @override

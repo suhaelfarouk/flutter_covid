@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
-import 'package:url_launcher/url_launcher.dart';
 
 class BnewsPage extends StatefulWidget {
   @override
@@ -28,7 +28,7 @@ class _BnewsPageState extends State<BnewsPage>
       });
     }
 
-    print(newsData);
+    //  print(newsData);
   }
 
   @override
@@ -61,7 +61,18 @@ class _BnewsPageState extends State<BnewsPage>
                           left: 10.0,
                         ),
                         child: GestureDetector(
-                          onTap: () => launch(newsData![index]['link']),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => SafeArea(
+                                  child: WebviewScaffold(
+                                    url: newsData![index]['link'],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
                           child: Container(
                             decoration: BoxDecoration(
                               color: Theme.of(context).brightness ==
