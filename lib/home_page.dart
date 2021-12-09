@@ -1,12 +1,9 @@
 import 'dart:convert';
 
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:delayed_display/delayed_display.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_covid/datasource.dart';
-import 'package:flutter_covid/pages/offline_page.dart';
 
 import 'package:flutter_covid/panels/chart_panel.dart';
 
@@ -17,7 +14,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:http/http.dart' as http;
 
 class HomePage extends StatefulWidget {
-  final quote = DataSource.quote;
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -27,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   fetchWorldWideData() async {
     http.Response response =
         await http.get(Uri.parse('https://disease.sh/v3/covid-19/all'));
+    if (!mounted) return;
     setState(() {
       worldData = jsonDecode(response.body);
     });
@@ -36,6 +33,7 @@ class _HomePageState extends State<HomePage> {
   fetchAffectedCountryData() async {
     http.Response response = await http
         .get(Uri.parse('https://disease.sh/v3/covid-19/countries?sort=deaths'));
+    if (!mounted) return;
     setState(() {
       countryData = jsonDecode(response.body);
     });
@@ -46,6 +44,7 @@ class _HomePageState extends State<HomePage> {
   fetchCasesData() async {
     http.Response response = await http.get(Uri.parse(
         'https://disease.sh/v3/covid-19/historical/all?lastdays=all'));
+    if (!mounted) return;
     setState(() {
       casesData = jsonDecode(response.body)['cases'];
     });
@@ -73,6 +72,7 @@ class _HomePageState extends State<HomePage> {
   fetchDeathsData() async {
     http.Response response = await http.get(Uri.parse(
         'https://disease.sh/v3/covid-19/historical/all?lastdays=all'));
+    if (!mounted) return;
     setState(() {
       deathsData = jsonDecode(response.body)['deaths'];
     });
@@ -100,6 +100,7 @@ class _HomePageState extends State<HomePage> {
   fetchRecoveredData() async {
     http.Response response = await http.get(Uri.parse(
         'https://disease.sh/v3/covid-19/historical/all?lastdays=all'));
+    if (!mounted) return;
     setState(() {
       recoveredData = jsonDecode(response.body)['recovered'];
     });
@@ -132,6 +133,7 @@ class _HomePageState extends State<HomePage> {
   fetchVaccineData() async {
     http.Response response = await http.get(Uri.parse(
         'https://disease.sh/v3/covid-19/vaccine/coverage?lastdays=195&fullData=false'));
+    if (!mounted) return;
     setState(() {
       vaccineData = jsonDecode(response.body);
     });
@@ -167,7 +169,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  Future fetchData() async {
+  fetchData() {
     fetchWorldWideData();
     fetchAffectedCountryData();
     fetchCasesData();
@@ -178,8 +180,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    super.initState();
     fetchData();
+    super.initState();
   }
 
   @override

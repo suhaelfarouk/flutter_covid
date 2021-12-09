@@ -2,8 +2,8 @@ import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_covid/pages/offline_page.dart';
-
 import 'package:flutter_covid/panels/navbar_panel.dart';
+
 import 'themes.dart';
 
 void main() async {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: lightThemeData,
       darkTheme: darkThemeData,
       themeMode: EasyDynamicTheme.of(context).themeMode,
-      home: OfflinePage(),
+      home: NavBar(),
     );
   }
 }
