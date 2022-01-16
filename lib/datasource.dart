@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 Color primaryBlack = Color(0xff202c3b);
 Color vistaWhite = Color(0xffecf3f9);
 
+
 // class DataSource {
 //   static String quote =
 //       "Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less.";

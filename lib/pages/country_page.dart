@@ -30,7 +30,7 @@ class _CountryPageState extends State<CountryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).brightness == Brightness.dark
-          ? Colors.black45
+          ? Colors.black54
           : Colors.black12,
       // appBar: AppBar(
       //   backgroundColor: Theme.of(context).brightness == Brightness.dark

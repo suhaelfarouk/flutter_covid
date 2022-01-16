@@ -46,6 +46,7 @@ dependencies:
   connectivity_plus: ^2.1.0
   #webview_flutter: ^3.0.0
   flutter_webview_plugin: ^0.4.0
+  d_chart: ^0.0.3
   
 
   
@@ -90,12 +91,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   fonts:
-    - family: Gilroy
+    - family: GoogleSans
       fonts:
-       # - asset: fonts/IBMPlexSans-Light.ttf
-       # - asset: fonts/Gilroy-Regular.ttf
-        - asset: fonts/Gilroy-Medium.ttf
-        - asset: fonts/Gilroy-Bold.ttf
+        - asset: fonts/GoogleSans-Regular.ttf
+        - asset: fonts/GoogleSans-Medium.ttf
+        - asset: fonts/GoogleSans-Bold.ttf
           style: normal
   # example:
   # fonts:

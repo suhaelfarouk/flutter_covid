@@ -22,7 +22,7 @@ class _ChartPanelState extends State<ChartPanel> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 10, bottom: 10, left: 10, right: 10),
+      margin: EdgeInsets.all(10),
       padding: EdgeInsets.only(bottom: 10, left: 15, right: 15),
       height: 143,
       decoration: BoxDecoration(
@@ -55,7 +55,7 @@ class _ChartPanelState extends State<ChartPanel> {
                 ],
               ),
               fillMode: FillMode.below,
-              max: 1200000.0,
+              max: 5000000.0,
               min: 1.0,
             ),
           ),
@@ -80,7 +80,7 @@ class _ChartPanelState extends State<ChartPanel> {
                       : Colors.white,
                 ],
               ),
-              max: 900000,
+              max: 1100000,
               min: 1.0,
             ),
           ),

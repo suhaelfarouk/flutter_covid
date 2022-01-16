@@ -17,7 +17,7 @@ class _SlotsPageState extends State<SlotsPage> {
       body: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).brightness == Brightness.dark
-              ? Colors.black45
+              ? Colors.black54
               : Colors.black12,
         ),
         child: widget.slots!.length == 0

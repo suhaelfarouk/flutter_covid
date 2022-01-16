@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:delayed_display/delayed_display.dart';
 import 'package:easy_dynamic_theme/easy_dynamic_theme.dart';
@@ -129,6 +130,8 @@ class _HomePageState extends State<HomePage> {
   List<double>? vaccine;
   double? lastVaccine;
   double? todayVaccine;
+  List<double>? totalVaccine;
+  int? highestVaccine;
 
   fetchVaccineData() async {
     http.Response response = await http.get(Uri.parse(
@@ -144,16 +147,26 @@ class _HomePageState extends State<HomePage> {
       final value = vaccineData![name];
       vac.add(value.toDouble());
     }
+    List<double> finalVaccine = [];
+    Map mapA = vac.asMap();
+    for (var i = 0; i < (vac.length - 1); i++) {
+      finalVaccine.add((mapA[i + 1] - mapA[i]));
+      finalVaccine.removeWhere((element) => element <= 1);
+    }
+
+    totalVaccine = finalVaccine;
+    highestVaccine = totalVaccine!.reduce(max).round();
+
     lastVaccine = vac.last;
 
     int thirty = vac.length - 30;
     vac.removeRange(0, thirty);
 
     List<double> secondVaccine = [];
-    Map map = vac.asMap();
+    Map mapB = vac.asMap();
 
     for (var i = 0; i < (vac.length - 1); i++) {
-      secondVaccine.add((map[i + 1] - map[i]));
+      secondVaccine.add((mapB[i + 1] - mapB[i]));
       secondVaccine.removeWhere((element) => element <= 1);
     }
     todayVaccine = secondVaccine.last;
@@ -188,7 +201,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).brightness == Brightness.dark
-          ? Colors.black45
+          ? Colors.black54
           : Colors.black12,
       appBar: AppBar(
         elevation: 0,
@@ -230,15 +243,16 @@ class _HomePageState extends State<HomePage> {
                 deaths == null ||
                 recovered == null ||
                 cases == null
-            ? SizedBox(
-                height: MediaQuery.of(context).size.height / 1.3,
-                child: SpinKitThreeBounce(
-                  color: Theme.of(context).brightness == Brightness.dark
-                      ? Colors.white
-                      : primaryBlack,
-                  size: 27,
-                ),
-              )
+            ? Center(child: CircularProgressIndicator())
+            // SizedBox(
+            //     height: MediaQuery.of(context).size.height / 1.3,
+            //     child: SpinKitThreeBounce(
+            //       color: Theme.of(context).brightness == Brightness.dark
+            //           ? Colors.white
+            //           : primaryBlack,
+            //       size: 27,
+            //     ),
+            //   )
             : RefreshIndicator(
                 onRefresh: refreshUI,
                 child: SingleChildScrollView(
@@ -252,6 +266,8 @@ class _HomePageState extends State<HomePage> {
                           lastVaccine: lastVaccine,
                           vaccine: vaccine,
                           todayVaccine: todayVaccine,
+                          totalVaccine: totalVaccine,
+                          highestVaccine: highestVaccine,
                         ),
                       ),
                       DelayedDisplay(

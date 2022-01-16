@@ -8,12 +8,16 @@ class VaccinePanel extends StatefulWidget {
   final lastVaccine;
   final vaccine;
   final todayVaccine;
+  final totalVaccine;
+  final highestVaccine;
 
   const VaccinePanel(
       {Key? key,
       required this.lastVaccine,
       required this.vaccine,
-      required this.todayVaccine})
+      required this.todayVaccine,
+      required this.totalVaccine,
+      required this.highestVaccine})
       : super(key: key);
 
   @override
@@ -23,6 +27,10 @@ class VaccinePanel extends StatefulWidget {
 class _VaccinePanelState extends State<VaccinePanel> {
   @override
   Widget build(BuildContext context) {
+    var formatter = NumberFormat('#,###,###,000');
+    Color vacColor = Theme.of(context).brightness == Brightness.dark
+        ? Colors.orange[100]!
+        : Colors.orange[800]!;
     void showBottomSheet(context) {
       showModalBottomSheet(
         backgroundColor: Colors.transparent,
@@ -32,17 +40,67 @@ class _VaccinePanelState extends State<VaccinePanel> {
           builder: (context, StateSetter myState) {
             return SingleChildScrollView(
               child: Container(
+                height: MediaQuery.of(context).size.height * 0.92,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
+                  color: Theme.of(context).brightness == Brightness.dark
+                      ? Colors.black
+                      : Colors.white,
                 ),
                 margin: EdgeInsets.all(15),
                 padding: EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom,
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(20),
-                  child: Column(),
+                  padding: const EdgeInsets.all(20.0),
+                  child: DraggableScrollableSheet(
+                    initialChildSize: .3,
+                    minChildSize: .2,
+                    maxChildSize: .3,
+                    builder: (BuildContext context,
+                        ScrollController scrollController) {
+                      return Stack(children: [
+                        Positioned(
+                          left: 240,
+                          bottom: 160,
+                          child: Text(
+                              '${(NumberFormat.compact().format(widget.highestVaccine).toString())}'),
+                        ),
+                        SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          controller: scrollController,
+                          child: Sparkline(
+                            fallbackWidth: 5000,
+                            data: widget.totalVaccine,
+                            lineColor: vacColor,
+                            // pointsMode: PointsMode.all,
+                            // pointSize: 4,
+                            pointColor:
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.orange[800]!
+                                    : Colors.orange[100]!,
+                            lineWidth: 4,
+                            sharpCorners: true,
+                            fillMode: FillMode.below,
+                            fillGradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.orange[100]!
+                                    : Colors.orange[100]!,
+                                Theme.of(context).brightness == Brightness.dark
+                                    ? Colors.black
+                                    : Colors.white,
+                              ],
+                            ),
+
+                            //max: 100000000,
+                          ),
+                        ),
+                      ]);
+                    },
+                  ),
                 ),
               ),
             );
@@ -51,9 +109,6 @@ class _VaccinePanelState extends State<VaccinePanel> {
       );
     }
 
-    Color vacColor = Theme.of(context).brightness == Brightness.dark
-        ? Colors.orange[100]!
-        : Colors.orange[800]!;
     return InkWell(
       overlayColor: MaterialStateProperty.all(
         Theme.of(context).brightness == Brightness.dark
@@ -69,8 +124,8 @@ class _VaccinePanelState extends State<VaccinePanel> {
       },
       child: Container(
         height: 143,
-        padding: EdgeInsets.only(right: 15, left: 15, bottom: 0, top: 10),
-        margin: EdgeInsets.only(bottom: 10, top: 10, right: 10, left: 10),
+        padding: EdgeInsets.only(right: 15, left: 15, top: 15),
+        margin: EdgeInsets.all(10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(8)),
           color: Theme.of(context).brightness == Brightness.dark
@@ -81,40 +136,25 @@ class _VaccinePanelState extends State<VaccinePanel> {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 8,
-                      bottom: 2,
-                      left: 4,
-                      right: 4,
-                    ),
-                    child: Text(
-                      'VACCINATION DRIVE',
-                      style: TextStyle(
-                        color: vacColor,
-                        fontWeight: FontWeight.normal,
-                        fontSize: 15,
-                      ),
+                  Text(
+                    'VACCINE',
+                    style: TextStyle(
+                      color: vacColor,
+                      fontWeight: FontWeight.normal,
+                      fontSize: 15,
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 2,
-                      left: 4,
-                      right: 4,
-                      bottom: 2,
-                    ),
-                    child: Text(
-                      '${(NumberFormat.compact().format(widget.lastVaccine).toString())}',
-                      style: TextStyle(
-                        color: vacColor,
-                        fontWeight: FontWeight.w900,
-                        fontSize: 27,
-                      ),
+                  Text(
+                    // formatter.format(widget.lastVaccine).toString(),
+                    '${(NumberFormat.compact().format(widget.lastVaccine).toString())}',
+                    style: TextStyle(
+                      color: vacColor,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 28,
                     ),
                   ),
                 ],
@@ -126,13 +166,13 @@ class _VaccinePanelState extends State<VaccinePanel> {
                   delay: Duration(milliseconds: 700),
                   child: Padding(
                     padding: const EdgeInsets.only(
-                      top: 0,
+                      top: 10,
                       left: 0,
                       right: 0,
-                      bottom: 20,
+                      bottom: 0,
                     ),
                     child: Sparkline(
-                      fallbackHeight: 100,
+                      fallbackHeight: 115,
                       fallbackWidth: 240,
                       data: widget.vaccine,
                       useCubicSmoothing: true,
@@ -161,56 +201,26 @@ class _VaccinePanelState extends State<VaccinePanel> {
             ),
             Container(
               child: Align(
-                alignment: Alignment.center,
+                alignment: Alignment.topRight,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        bottom: 1,
-                        top: 90,
-                        left: 1,
-                        right: 1,
-                      ),
-                      child: Text(
-                        'yestereday',
-                        style: TextStyle(
-                          color: vacColor,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 13,
-                        ),
-                      ),
+                    Icon(
+                      Icons.trending_up,
+                      size: 13,
+                      color: vacColor,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        bottom: 2,
-                        top: 90,
-                        left: 2,
-                        right: 2,
-                      ),
-                      child: Text(
-                        '${(NumberFormat.compact().format(widget.todayVaccine).toString())}',
-                        style: TextStyle(
-                          color: vacColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 14,
-                        ),
-                      ),
+                    SizedBox(
+                      height: 4,
+                      width: 4,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(
-                        bottom: 1,
-                        top: 90,
-                        left: 1,
-                        right: 1,
-                      ),
-                      child: Text(
-                        'doses were adminstered.',
-                        style: TextStyle(
-                          color: vacColor,
-                          fontWeight: FontWeight.normal,
-                          fontSize: 13,
-                        ),
+                    Text(
+                      formatter.format(widget.todayVaccine).toString(),
+                      // '${(NumberFormat.compact().format(widget.todayVaccine).toString())}',
+                      style: TextStyle(
+                        color: vacColor,
+                        fontWeight: FontWeight.normal,
+                        fontSize: 16,
                       ),
                     ),
                   ],

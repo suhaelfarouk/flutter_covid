@@ -42,7 +42,7 @@ class _CnewsPageState extends State<CnewsPage>
     super.build(context);
     return Scaffold(
       backgroundColor: Theme.of(context).brightness == Brightness.dark
-          ? Colors.black45
+          ? Colors.black54
           : Colors.black12,
       body: newsData == null
           ? Center(

@@ -15,7 +15,7 @@ class _WorldWidePanelState extends State<WorldWidePanel> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 0, bottom: 0, left: 10, right: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10),
       child: Container(
         child: GridView(
           shrinkWrap: true,
@@ -38,7 +38,7 @@ class _WorldWidePanelState extends State<WorldWidePanel> {
               today: widget.worldData!['critical'],
             ),
             StatusPanel(
-              title: 'CONFIRMED',
+              title: 'DETECTED',
               panelColor: Theme.of(context).brightness == Brightness.dark
                   ? Colors.black
                   : Colors.white,
@@ -91,6 +91,7 @@ class StatusPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var formatter = NumberFormat('#,###,###,000');
     double width = MediaQuery.of(context).size.width;
     return Container(
       padding: EdgeInsets.all(10),
@@ -116,15 +117,16 @@ class StatusPanel extends StatelessWidget {
                         title,
                         style: TextStyle(
                           fontWeight: FontWeight.w100,
-                          fontSize: 13,
+                          fontSize: 15,
                           color: textColor,
                         ),
                       ),
                       Text(
+                        //formatter.format(count).toString(),
                         '${(NumberFormat.compact().format(count).toString())}',
                         style: TextStyle(
                           fontWeight: FontWeight.w900,
-                          fontSize: 27,
+                          fontSize: 25,
                           color: textColor,
                         ),
                       ),
@@ -147,10 +149,11 @@ class StatusPanel extends StatelessWidget {
                         width: 4,
                       ),
                       Text(
-                        ('${(NumberFormat.compact().format(today).toString())}'),
+                        formatter.format(today).toString(),
+                        //'${(NumberFormat.compact().format(today).toString())}',
                         style: TextStyle(
                           fontWeight: FontWeight.w100,
-                          fontSize: 13,
+                          fontSize: 15,
                           color: textColor,
                         ),
                       ),
